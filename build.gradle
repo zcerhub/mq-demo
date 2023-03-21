@@ -1,0 +1,29 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.9'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation group: 'org.apache.rocketmq', name: 'rocketmq-client', version: '4.9.4'
+	implementation group: 'io.opentelemetry.instrumentation', name: 'opentelemetry-rocketmq-client-4.8', version: '1.24.0-alpha'
+	implementation 'io.opentelemetry:opentelemetry-api:1.24.0'
+	implementation 'io.opentelemetry:opentelemetry-sdk:1.24.0'
+	implementation 'io.opentelemetry:opentelemetry-exporter-otlp:1.23.1'
+	implementation 'io.opentelemetry:opentelemetry-semconv:1.24.0-alpha'
+	implementation "io.opentelemetry:opentelemetry-exporter-logging:1.23.1"
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
